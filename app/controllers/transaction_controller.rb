@@ -1,8 +1,13 @@
 class TransactionController < ApplicationController
 
   def retrieve_stores
-    @stores = Master::Store.all
-    render_result_json @stores
+    stores = Master::Store.all
+    render_result_json stores
+  end
+
+  def retrieve_transactions
+    transactions = Transaction.all
+    render_result_json transactions
   end
 
   def add_transaction

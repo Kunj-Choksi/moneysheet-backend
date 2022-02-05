@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get 'transaction/retrieve_stores', to: "transaction#retrieve_stores"
+  get 'transaction/retrieve_transactions', to: "transaction#retrieve_transactions"
   post 'transaction/add_transaction', to: 'transaction#add_transaction'
 end
