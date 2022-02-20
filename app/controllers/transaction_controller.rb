@@ -12,6 +12,7 @@ class TransactionController < ApplicationController
 
   def add_transaction
     transaction = Transaction.new(
+      user_id: params[:user_id],
       store_id: params[:store_id],
       datetime: params[:datetime],
       amount: params[:amount],

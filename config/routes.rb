@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   #user
   post 'user/register_user', to: 'user#register_user'
+
+  #dashboard
+  post 'dashboard/retrieve_dashboard_data', to: 'dashboard#retrieve_dashboard_data'
+
 end
