@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/radar/by_star
+  revision: d7811c0c50f30262b4862b384c50f22f36e54f07
+  specs:
+    by_star (4.0.0)
+      activesupport (>= 3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  by_star!
   capybara
   debug
   importmap-rails
