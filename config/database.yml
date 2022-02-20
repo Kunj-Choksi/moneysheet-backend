@@ -21,5 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: d923tjesctlucr
+  pool: 5
+  username: cnrsgzipqzissr
+  password: b936b42deef0a20e8fec0ecb4b710d3dc654b75c8d458c0fcd28f7e7eecdb5b8
