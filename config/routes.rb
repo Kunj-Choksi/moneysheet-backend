@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'transaction/add_transaction', to: 'transaction#add_transaction'
 
   #user
+  post 'user/verify_user', to: 'user#verify_user'
   post 'user/register_user', to: 'user#register_user'
 
   #dashboard

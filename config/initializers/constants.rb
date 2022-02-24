@@ -1,2 +1,4 @@
+MY_SECRET = 'eiwo928rve43843uhjndsncbvhiduweurweos'
+
 PURCHASE_TYPE_EXPENSE = 1
 PURCHASE_TYPE_INCOME = 2

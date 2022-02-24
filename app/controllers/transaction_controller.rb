@@ -1,4 +1,5 @@
 class TransactionController < ApplicationController
+  before_action :session_user
 
   def retrieve_stores
     stores = Master::Store.all
