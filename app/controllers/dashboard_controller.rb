@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :session_user
 
   def retrieve_dashboard_data
-    transactions = Transaction.includes(:master_store).where(user_id: params[:user_id])
+    transactions = Transaction.includes(:master_store).where(user_id: params[:user_id]).order("datetime DESC")
     map = {}
 
     map['overall'] = transactions

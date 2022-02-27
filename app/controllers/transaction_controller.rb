@@ -7,7 +7,7 @@ class TransactionController < ApplicationController
   end
 
   def retrieve_transactions
-    transactions = Transaction.includes(:master_store).by_month(params[:periodMonth], year: params[:periodYear], field: :datetime).all
+    transactions = Transaction.includes(:master_store).by_month(params[:periodMonth], year: params[:periodYear], field: :datetime).all.order("datetime DESC")
     render_result_json transactions
   end
 
