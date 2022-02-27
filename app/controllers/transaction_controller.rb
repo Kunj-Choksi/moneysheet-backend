@@ -17,7 +17,8 @@ class TransactionController < ApplicationController
       store_id: params[:store_id],
       datetime: params[:datetime],
       amount: params[:amount],
-      purchase_type: params[:purchase_type]
+      purchase_type: params[:purchase_type],
+      comments: params[:comments]
     )
 
     render_result_message('Added new transaction') if transaction.save
