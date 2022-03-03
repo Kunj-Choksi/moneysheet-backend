@@ -1,5 +1,5 @@
 class TransactionController < ApplicationController
-  before_action :session_user
+  before_action :session_client
 
   def retrieve_stores
     stores = Master::Store.all
@@ -13,7 +13,7 @@ class TransactionController < ApplicationController
 
   def add_transaction
     transaction = Transaction.new(
-      user_id: params[:user_id],
+      client_id: params[:client_id],
       store_id: params[:store_id],
       datetime: params[:datetime],
       amount: params[:amount],

@@ -13,11 +13,10 @@ Rails.application.routes.draw do
   get 'transaction/retrieve_transactions', to: "transaction#retrieve_transactions"
   post 'transaction/add_transaction', to: 'transaction#add_transaction'
 
-  #user
-  post 'user/verify_user', to: 'user#verify_user'
-  post 'user/register_user', to: 'user#register_user'
+  #client
+  post 'client/verify_client', to: 'client#verify_client'
+  post 'client/register_client', to: 'client#register_client'
 
   #dashboard
   post 'dashboard/retrieve_dashboard_data', to: 'dashboard#retrieve_dashboard_data'
-
 end

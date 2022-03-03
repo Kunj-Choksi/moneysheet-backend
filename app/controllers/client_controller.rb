@@ -1,10 +1,10 @@
-class UserController < ApplicationController
+class ClientController < ApplicationController
 
-  def register_user
-    user = User.where(email: params[:email]).first
+  def register_client
+    client = Client.where(email: params[:email]).first
 
-    unless user.present?
-      user = User.create(
+    unless client.present?
+      client = Client.create(
         name: params[:name],
         email: params[:email],
         total_balance: 0.0,
@@ -19,11 +19,11 @@ class UserController < ApplicationController
     render_result_json map
   end
 
-  def verify_user
-    user = User.where(email: params[:email], google_uid: params[:google_uid]).first
+  def verify_client
+    client = Client.where(email: params[:email], google_uid: params[:google_uid]).first
 
-    unless user.present?
-      render_error_message('User not found')
+    unless client.present?
+      render_error_message('Client not found')
       return
     end
 

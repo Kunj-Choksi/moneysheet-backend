@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_26_135424) do
+ActiveRecord::Schema.define(version: 2022_03_03_221434) do
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.float "total_balance"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "google_uid"
+    t.string "google_photo_url"
+  end
 
   create_table "master_stores", force: :cascade do |t|
     t.string "name"
@@ -21,22 +31,14 @@ ActiveRecord::Schema.define(version: 2022_02_26_135424) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "store_id"
+    t.integer "store_id"
     t.datetime "datetime", precision: 6
     t.float "amount"
     t.integer "purchase_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_id"
+    t.string "client_id"
     t.text "comments"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.float "total_balance"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

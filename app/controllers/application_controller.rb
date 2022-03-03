@@ -30,13 +30,13 @@ class ApplicationController < ActionController::Base
     JWT.encode(payload, MY_SECRET)
   end
 
-  def session_user
+  def session_client
     decoded_hash = decode_token
     if decoded_hash && decoded_hash.empty?
       nil
     else
-      user_google_id = decoded_hash[0]['google_uid']
-      @user = User.where(google_uid: user_google_id).first
+      client_google_id = decoded_hash[0]['google_uid']
+      @client = Client.where(google_uid: client_google_id).first
     end
   end
 
