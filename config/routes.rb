@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
+  namespace :master do
+    resources :stores
+  end
   
   get 'login', to: "login#index"
   post 'get_login', to: "login#get_login"
@@ -6,7 +10,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "master/stores#index"
 
   #transaction
   get 'transaction/retrieve_stores', to: "transaction#retrieve_stores"
