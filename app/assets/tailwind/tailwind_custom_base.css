@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind forms;
+
+/* You can use apply here!*/
+.btn {
+    @apply px-4 py-2 bg-blue-600 hover:bg-blue-400 text-white rounded cursor-pointer;
+}

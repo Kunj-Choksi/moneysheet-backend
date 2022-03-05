@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "tailwindcss:build": "tailwindcss-cli build ./app/assets/tailwind/tailwind_custom_base.css -o ./app/assets/stylesheets/tailwind_custom.css"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.2.1",
+        "tailwindcss-cli": "^0.1.2"
+    }
+}

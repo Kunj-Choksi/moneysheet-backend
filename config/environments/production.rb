@@ -84,7 +84,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'https://money-sheet.herokuapp.com', port: 3000 }
 
-
+  config.assets.css_compressor = :custom_purger
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

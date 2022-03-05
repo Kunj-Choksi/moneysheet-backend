@@ -2,7 +2,7 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = "1.0"
-
+Sprockets.register_compressor "text/css", :custom_purger, Tailwindcss::Compressor.new({ only_purge: %w[tailwind_custom] })
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 
