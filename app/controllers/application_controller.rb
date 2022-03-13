@@ -54,4 +54,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_for_logged_in_session
+    if user_signed_in?
+      return
+    else
+      redirect_to "/users/sign_in"
+    end
+  end
 end
