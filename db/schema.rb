@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_224356) do
+ActiveRecord::Schema.define(version: 2022_03_13_173703) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2022_03_03_224356) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "google_uid"
     t.string "google_photo_url"
+  end
+
+  create_table "master_categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "status_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "master_stores", force: :cascade do |t|

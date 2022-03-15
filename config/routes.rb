@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # master_stores
   namespace :master do
+    resources :categories
     resources :store
   end
 
