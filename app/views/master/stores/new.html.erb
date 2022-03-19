@@ -1,0 +1,18 @@
+<%= form_with scope: :master_store, url: master_stores_path, local: true do |form| %>
+    <% if @master_store.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+            <h2><%= pluralize(@master_store.errors.count, "error") %> prohibited this master_category from being
+                saved:</h2>
+
+            <ul>
+                <% @master_store.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div>
+        <h1 class="text-3xl">New Store</h1>
+    </div>
+    <%= render 'master/stores/form' %>
+<% end %>

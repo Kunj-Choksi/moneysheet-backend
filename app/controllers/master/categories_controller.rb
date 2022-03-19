@@ -1,7 +1,7 @@
 class Master::CategoriesController < ApplicationController
-  before_action :set_master_category, only: %i[ show edit update destroy ]
   layout 'dashboard'
   before_action :check_for_logged_in_session
+  before_action :set_master_category, only: %i[ show edit update destroy ]
 
   # GET /master/categories or /master/categories.json
   def index
@@ -25,11 +25,13 @@ class Master::CategoriesController < ApplicationController
   def create
     @master_category = Master::Category.new(master_category_params)
 
-    respond_to do |format|
-      if @master_category.save
-        format.html { redirect_to master_category_path(@master_category), notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @master_category }
-      else
+    if @master_category.save
+      flash[:notice] = 'Category was successfully created.'
+      redirect_to "/master/categories"
+      #format.html { redirect_to master_category_path(@master_category), notice: 'Category was successfully created.' }
+      #format.json { render :show, status: :created, location: @master_category }
+    else
+      respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @master_category.errors, status: :unprocessable_entity }
       end
@@ -38,11 +40,13 @@ class Master::CategoriesController < ApplicationController
 
   # PATCH/PUT /master/categories/1 or /master/categories/1.json
   def update
-    respond_to do |format|
-      if @master_category.update(master_category_params)
-        format.html { redirect_to master_category_path(@master_category), notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @master_category }
-      else
+    if @master_category.update(master_category_params)
+      flash[:notice] = 'Category was successfully updated.'
+      redirect_to "/master/categories"
+      # format.html { redirect_to master_category_path(@master_category), notice: 'Category was successfully updated.' }
+      # format.json { render :show, status: :ok, location: @master_category }
+    else
+      respond_to do |format|
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @master_category.errors, status: :unprocessable_entity }
       end
