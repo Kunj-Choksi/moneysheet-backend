@@ -12,6 +12,7 @@ class Master::StoresController < ApplicationController
 
   def new
     @master_store = Master::Store.new
+    @categories = Master::Category.all
   end
 
   def create
@@ -25,7 +26,7 @@ class Master::StoresController < ApplicationController
   end
 
   def edit
-
+    @categories = Master::Category.all
   end
 
   def update
@@ -40,7 +41,7 @@ class Master::StoresController < ApplicationController
   private
 
   def master_store_params
-    params.require(:master_store).permit(:name, :logo_url)
+    params.require(:master_store).permit(:name, :logo_url, :category_id)
   end
 
   def set_master_store

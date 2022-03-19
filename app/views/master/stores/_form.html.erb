@@ -1,4 +1,4 @@
-<%= form_with(model: @master_store,  local: true) do |form| %>
+<%= form_with(model: @master_store, local: true) do |form| %>
     <div class="my-5">
         <%= form.label :name, :class => "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
         <%= form.text_field :name, :class => "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
@@ -10,6 +10,10 @@
     <div class="my-5">
         <%= form.label :status_id, :class => "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
         <%= form.select :status_id, [["Published", 1], ["Draft", 2]], {}, { :class => "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" } %>
+    </div>
+    <div class="my-5">
+        <%= form.label :category_id, :class => "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" %>
+        <%= form.collection_select(:category_id, Master::Category.all, :id, :name, include_blank: true, :html_options => { class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-50 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" }) %>
     </div>
     <div class="inline">
         <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
