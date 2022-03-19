@@ -15,8 +15,9 @@ class Master::StoresController < ApplicationController
   end
 
   def create
-    @master_store = Master::Store.new(set_master_store)
+    @master_store = Master::Store.new(master_store_params)
     if @master_store.save
+      flash[:notice] = "Created Successfully!"
       redirect_to @master_store
     else
       render :new, status: :unprocessable_entity
