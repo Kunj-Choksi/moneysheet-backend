@@ -7,8 +7,24 @@ class TransactionController < ApplicationController
   end
 
   def retrieve_transactions
-    transactions = Transaction.includes(:master_store).by_month(params[:periodMonth], year: params[:periodYear], field: :datetime).all.order("datetime DESC")
-    render_result_json transactions
+    transactions = Transaction.joins("LEFT JOIN master_stores ON master_stores.id = transactions.store_id LEFT JOIN master_categories ON master_categories.id = master_stores.id")
+                                                .includes(master_store: :master_category)
+                                                .by_month(params[:periodMonth], year: params[:periodYear], field: :datetime)
+                                                .all.order("datetime DESC")
+    map = {}
+    map["transactions"] = transactions
+    categories = Master::Category.all
+    
+    map['categories_analysis'] = {}
+    categories.each do |cat|
+        unless map['categories_analysis'][cat.name].present?
+            map['categories_analysis'][cat.name] = 0
+        end
+
+        map['categories_analysis'][cat.name] = transactions.where("master_categories.id = ?", cat.id).sum(:amount) rescue nil
+    end
+
+    render_result_json map
   end
 
   def add_transaction

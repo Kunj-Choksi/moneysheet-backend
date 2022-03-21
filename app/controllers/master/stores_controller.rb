@@ -19,7 +19,7 @@ class Master::StoresController < ApplicationController
     @master_store = Master::Store.new(master_store_params)
     if @master_store.save
       flash[:notice] = "Created Successfully!"
-      redirect_to @master_store
+      redirect_to "/"
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class Master::StoresController < ApplicationController
   def update
     if @master_store.update(master_store_params)
       flash[:notice] = "Updated Successfully!"
-      redirect_to @master_store
+      redirect_to "/"
     else
       render 'edit'
     end
