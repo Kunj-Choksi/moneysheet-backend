@@ -7,21 +7,18 @@ class TransactionController < ApplicationController
   end
 
   def retrieve_transactions
-    transactions = Transaction.by_month(params[:periodMonth], year: params[:periodYear], field: :datetime).all.order("datetime DESC")
-
-    sql = "SELECT mc.name, SUM(t.amount) total
-                FROM transactions t
-                INNER JOIN master_stores ms 
-                ON ms.id = t.store_id 
-                INNER JOIN master_categories mc 
-                ON ms.category_id = mc.id
-                WHERE 
-                EXTRACT(MONTH FROM t.datetime) = #{params[:periodMonth]}
-                GROUP BY mc.name
-                ORDER BY total;" 
     map = {}
+    transactions = Transaction.includes(:master_store).by_month(params[:periodMonth], year: params[:periodYear], field: :datetime).all.order("datetime DESC")
     map["transactions"] = transactions
-    map['categories_analysis'] = ActiveRecord::Base.connection.execute(sql).values rescue nil
+    map["category_wise"] = []
+
+	Master::Category.all.each do |mc|
+		values = []
+		values << mc.name
+		values << transactions.where("master_stores.category_id = ?", mc.id).sum(:amount)
+
+		map["category_wise"] << values
+	end
 
     render_result_json map
   end
