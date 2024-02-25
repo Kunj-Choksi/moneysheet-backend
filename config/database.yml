@@ -21,6 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
+  <<: *default
+  host: <%= ENV.fetch("DATABASE_HOST") %>
   adapter: postgresql
   encoding: unicode
   database: <%= ENV.fetch("DATABASE_NAME") %>
